@@ -33,7 +33,7 @@ public class CountWords {
      * @param file - файл с данными
      * @return - целое число - сумма всех чисел из файла
      */
-    public long countNumbers(File file) throws Exception, NumberFormatException {
+    public long countNumbers(File file) throws Exception {
         BufferedReader br = new BufferedReader(new FileReader(file));
         long result = 0;
         while (true) {
@@ -41,8 +41,10 @@ public class CountWords {
             if (line == null) {
                 break;
             }
-            int newElement = Integer.parseInt(line);
-            result += newElement;
+            try {
+                int newElement = Integer.parseInt(line);
+                result += newElement;
+            } catch (NumberFormatException npe) { }
         }
         try {
             br.close();
