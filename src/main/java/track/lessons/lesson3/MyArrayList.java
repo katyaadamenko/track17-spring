@@ -26,6 +26,9 @@ public class MyArrayList extends List {
     public void add(int item) {
         if (size == data.length) {
             int newLength = size * 2;
+            if (newLength == 0) {
+                newLength = 2;
+            }
             int[] newData = new int[newLength];
             System.arraycopy(data, 0, newData, 0, data.length);
             data = newData;
@@ -40,9 +43,7 @@ public class MyArrayList extends List {
             throw new NoSuchElementException("MyArrayList : wrong index to remove");
         }
         int val = data[idx];
-        for (int index = idx; index < size - 1; ++index) {
-            data[index] = data[index + 1];
-        }
+        System.arraycopy(data, idx + 1, data, idx, size - idx - 1);
         size--;
         return val;
     }
