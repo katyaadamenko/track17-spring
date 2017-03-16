@@ -11,31 +11,52 @@ import java.util.NoSuchElementException;
  */
 public class MyArrayList extends List {
 
-    public MyArrayList() {
+    private int[] data;
 
+    public MyArrayList() {
+        final int default_capacity = 2;
+        data = new int[default_capacity];
     }
 
     public MyArrayList(int capacity) {
-
+        data = new int[capacity];
     }
 
     @Override
-    void add(int item) {
-
+    public void add(int item) {
+        if (size == data.length) {
+            int newLength = size * 2;
+            int[] newData = new int[newLength];
+            System.arraycopy(data, 0, newData, 0, data.length);
+            data = newData;
+        }
+        data[size] = item;
+        size++;
     }
 
     @Override
-    int remove(int idx) throws NoSuchElementException {
-        return 0;
+    public int remove(int idx) throws NoSuchElementException {
+        if (idx < 0 || idx >= size) {
+            throw new NoSuchElementException("MyArrayList : wrong index to remove");
+        }
+        int val = data[idx];
+        for (int index = idx; index < size - 1; ++index) {
+            data[index] = data[index + 1];
+        }
+        size--;
+        return val;
     }
 
     @Override
-    int get(int idx) throws NoSuchElementException {
-        return 0;
+    public int get(int idx) throws NoSuchElementException {
+        if (idx < 0 || idx >= size) {
+            throw new NoSuchElementException("MyArrayList: wrong index to get");
+        }
+        return data[idx];
     }
 
-    @Override
-    int size() {
-        return 0;
-    }
+    /*@Override
+    public int size() {
+        return size;
+    }*/
 }

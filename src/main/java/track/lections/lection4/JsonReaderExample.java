@@ -1,4 +1,4 @@
-package track.lections.lection4;
+/*package track.lections.lection4;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -15,4 +15,4 @@ public class JsonReaderExample {
             System.out.println(item.getName());
         }
     }
-}
+}*/

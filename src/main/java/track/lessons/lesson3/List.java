@@ -9,11 +9,13 @@ import java.util.NoSuchElementException;
  * <p>
  * Сейчас все методы помечены как abstract - эту метку можно убирать, если вы реализовываете его в этом классе
  */
-public abstract class List {
 
+public abstract class List {
+    protected int size;
     /**
      * Добавить элемент в конец списка
      */
+
     abstract void add(int item);
 
     /**
@@ -35,7 +37,7 @@ public abstract class List {
     /**
      * Кол-во элементов списка
      */
-    abstract int size();
-
-
+    public int size() {
+        return size;
+    }
 }
