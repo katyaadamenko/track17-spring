@@ -5,7 +5,7 @@ package track.lessons.lesson3;
 public class ListMain {
 
     public static void main(String[] args) {
-        MyArrayList arrayList = new MyArrayList();
+        /*MyArrayList arrayList = new MyArrayList();
         MyLinkedList linkedList = new MyLinkedList();
         for (int i = 0; i < 10; ++i) {
             arrayList.add(i);
@@ -46,6 +46,6 @@ public class ListMain {
         System.out.println("link");
         for (int i = 0; i < linkedList.size(); ++i) {
             System.out.print(linkedList.get(i) + " ");
-        }
+        }*/
     }
 }
