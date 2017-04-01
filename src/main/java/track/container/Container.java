@@ -1,10 +1,10 @@
 package track.container;
 
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Predicate;
 import java.lang.reflect.Field;
 import java.lang.Object;
 import java.util.stream.Collectors;
@@ -22,6 +22,25 @@ public class Container {
     private Map<String, Object> objByName = new HashMap<>();
     private Map<String, Object> objByClassName = new HashMap<>();
 
+    private static Object toObject(Class objectClass, String value ) {
+        if (Boolean.class == objectClass || Boolean.TYPE == objectClass) {
+            return Boolean.parseBoolean( value );
+        } else if (Byte.class == objectClass) {
+            return Byte.parseByte( value );
+        } else if (Short.class == objectClass || Short.TYPE == objectClass) {
+            return Short.parseShort( value );
+        } else if (Integer.class == objectClass || Integer.TYPE == objectClass) {
+            return Integer.parseInt( value );
+        } else if (Long.class == objectClass || Long.TYPE == objectClass) {
+            return Long.parseLong( value );
+        } else if (Float.class == objectClass || Float.TYPE == objectClass) {
+            return Float.parseFloat( value );
+        } else if (Double.class == objectClass || Double.TYPE == objectClass) {
+            return Double.parseDouble( value );
+        }
+        return value;
+    }
+
     private void addObject(Bean bean, List<Bean> beans) throws Exception {
         if (!objByName.containsKey(bean.getId())) {
             Class curClass = Class.forName(bean.getClassName());
@@ -33,7 +52,7 @@ public class Container {
                 Property property = (Property) pair.getValue();
                 if (property.getType().equals(ValueType.VAL)) {
                     field.setAccessible(true);
-                    field.set(obj, Integer.parseInt(property.getValue()));
+                    field.set(obj, toObject(field.getType(), property.getValue()));
                 } else {
                     if (!objByName.containsKey(property.getValue())) {
                         List<Bean> result = beans.stream()

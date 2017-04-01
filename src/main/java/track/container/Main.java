@@ -23,7 +23,7 @@ public class Main {
                 System.out.println(bean.toString());
             }
             Container container = new Container(beans);
-            Car car = (Car) container.getById("carBean");
+            Car car = (Car) container.getByClass("track.container.beans.Car");
             Gear gear = (Gear) container.getById("gearBean");
             Engine engine = (Engine) container.getById("engineBean");
             System.out.println(car.toString());
