@@ -3,11 +3,11 @@ package track.container.config;
 import java.io.File;
 import java.util.List;
 
+
 /**
  *
  */
 public interface ConfigReader {
-
     /**
      * Для методов интерфейса стоит писать документацию
      *
@@ -16,5 +16,4 @@ public interface ConfigReader {
      * @return - список бинов
      */
     List<Bean> parseBeans(File configFile) throws InvalidConfigurationException;
-
 }

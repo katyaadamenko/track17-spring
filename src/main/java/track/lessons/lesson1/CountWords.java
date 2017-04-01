@@ -36,19 +36,19 @@ public class CountWords {
     public long countNumbers(File file) throws Exception {
         BufferedReader br = new BufferedReader(new FileReader(file));
         long result = 0;
-        while(true) {
+        while (true) {
             String line = br.readLine();
-            if (line == null) break;
+            if (line == null) {
+                break;
+            }
             try {
                 int newElement = Integer.parseInt(line);
                 result += newElement;
-            }
-            catch(NumberFormatException npe) { }
+            } catch (NumberFormatException npe) { }
         }
         try {
             br.close();
-        }
-        catch(IOException ex) { }
+        } catch (IOException ex) { }
         return result;
     }
 
@@ -64,20 +64,20 @@ public class CountWords {
         BufferedReader br = new BufferedReader(new FileReader(file));
         StringBuilder builder = new StringBuilder();
         Boolean isFirst = true;
-        while(true) {
+        while (true) {
             String line = br.readLine();
-            if (line == null) break;
+            if (line == null) {
+                break;
+            }
             try {
                 Integer.parseInt(line);
-            }
-            catch(NumberFormatException npe) {
+            } catch (NumberFormatException npe) {
                 if (line.equals("")) {
                     continue;
                 }
                 if (!isFirst ) {
                     builder.append(" ");
-                }
-                else {
+                } else {
                     isFirst = false;
                 }
                 builder.append(line);
@@ -85,8 +85,7 @@ public class CountWords {
         }
         try {
             br.close();
-        }
-        catch(IOException ex) { }
+        } catch (IOException ex) { }
         return builder.toString();
     }
 }

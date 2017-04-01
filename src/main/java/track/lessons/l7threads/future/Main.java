@@ -13,7 +13,7 @@ import track.lections.Util;
 /**
  *
  */
-public class Main {
+/*public class Main {
 
     static Logger log = LoggerFactory.getLogger(Main.class);
 
@@ -47,4 +47,4 @@ public class Main {
         }
     }
 
-}
+}*/
